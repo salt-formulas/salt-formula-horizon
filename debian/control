@@ -18,9 +18,9 @@ Architecture: all
 Depends: reclass,
          salt-master,
          ${misc:Depends},
-Description: Salt formula for OpenStack Ceilometer
+Description: Salt formula for OpenStack Horizon
  Salt is a powerful remote execution manager that can be used to
  administer servers in a fast and efficient way.
  .
  This SaltStack formula manages both installation and configuration of
- OpenStack Ceilometer.
+ OpenStack Horizon.
