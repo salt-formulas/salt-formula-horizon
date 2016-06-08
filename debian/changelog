@@ -1,8 +1,8 @@
-salt-formula-horizon (2016.4.2-2) UNRELEASED; urgency=medium
+salt-formula-horizon (2016.4.2-2) unstable; urgency=medium
 
   * Added Debian tests
 
- -- Ondřej Nový <novy@ondrej.org>  Wed, 08 Jun 2016 21:02:54 +0200
+ -- Ondřej Nový <novy@ondrej.org>  Wed, 08 Jun 2016 21:27:18 +0200
 
 salt-formula-horizon (2016.4.2-1) unstable; urgency=medium
 
