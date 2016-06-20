@@ -1,3 +1,9 @@
+salt-formula-horizon (2016.4.2-3) UNRELEASED; urgency=medium
+
+  * d/{control,copyright}: Use my @debian.org email address
+
+ -- Ondřej Nový <onovy@debian.org>  Mon, 20 Jun 2016 20:14:51 +0200
+
 salt-formula-horizon (2016.4.2-2) unstable; urgency=medium
 
   * Added Debian tests
