@@ -54,8 +54,12 @@ horizon_user:
   git.latest:
   - name: {{ app.source.address }}
   - target: /srv/horizon/sites/{{ app_name }}/extra
+  {%- if grains.saltversioninfo.0 > 2015 %}
+  - rev: HEAD
+  - branch: {{ app.source.revision }}
+  {%- else %}
   - rev: {{ app.source.revision }}
-  - depth: 1
+  {%- endif %}
   - submodules: True
   - require:
     - virtualenv: /srv/horizon/sites/{{ app_name }}
@@ -255,7 +259,12 @@ horizon_{{ app_name }}_{{ plugin_name }}_config:
   {{ plugin.source.engine }}.latest:
   - name: {{ plugin.source.address }}
   - target: /srv/horizon/sites/{{ app_name }}/plugins/{{ plugin_name }}
+  {%- if grains.saltversioninfo.0 > 2015 %}
+  - rev: HEAD
+  - branch: {{ plugin.source.revision }}
+  {%- else %}
   - rev: {{ plugin.source.revision }}
+  {%- endif %}
   - submodules: True
   - require:
     - file: /srv/horizon/sites/{{ app_name }}/plugins
