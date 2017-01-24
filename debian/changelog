@@ -1,3 +1,9 @@
+salt-formula-horizon (2016.12.1-1trusty1) trusty; urgency=medium
+
+  * Build for Ubuntu trusty
+
+ -- Filip Pytloun <filip@pytloun.cz>  Tue, 24 Jan 2017 12:21:42 +0100
+
 salt-formula-horizon (2016.12.1-1) unstable; urgency=medium
 
   * New upstream release
