@@ -28,7 +28,7 @@ horizon:
         port: 11211
     identity:
       engine: keystone
-      encryption: encryption
+      encryption: ssl
       host: 127.0.0.1
       port: 5000
       api_version: 2
