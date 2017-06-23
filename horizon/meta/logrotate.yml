@@ -1,0 +1,14 @@
+job:
+  horizon:
+    - files:
+        - /var/log/horizon/*.log
+      options:
+        - compress
+        - delaycompress
+        - missingok
+        - notifempty
+        - rotate: 10
+        - daily
+        - minsize: 20M
+        - maxsize: 500M
+        - postrotate: "if /etc/init.d/apache2 status > /dev/null; then /etc/init.d/apache2 reload > /dev/null; fi"
