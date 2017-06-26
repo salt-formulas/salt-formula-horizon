@@ -19,6 +19,10 @@ OPENSTACK_HYPERVISOR_FEATURES = {
     'can_set_password': False,
 }
 
+# When set, enables the instance action "Retrieve password"
+# allowing password retrieval
+OPENSTACK_ENABLE_PASSWORD_RETRIEVE = {{ app.get('enable_password_retrieve', False) }}
+
 # When launching an instance, the menu of available flavors is
 # sorted by RAM usage, ascending.  Provide a callback method here
 # (and/or a flag for reverse sort) for the sorted() method if you'd
