@@ -35,6 +35,16 @@ Simplest horizon setup
         mail:
           host: '127.0.0.1'
 
+Multidomain setup for horizon
+
+.. code-block:: yaml
+
+    horizon:
+      server:
+        enabled: true
+        default_domain: MYDOMAIN
+        multidomain: True
+
 Simple branded horizon
 
 .. code-block:: yaml

@@ -1,4 +1,5 @@
 {%- from "horizon/map.jinja" import server with context %}
+{%- from "horizon/map.jinja" import multidomain,default_domain with context %}
 
 {%- if server.app is defined %}
 {%- set app = salt['pillar.get']('horizon:server:app:'+app_name) %}
@@ -39,10 +40,8 @@ OPENSTACK_KEYSTONE_URL = "http{% if app.identity.encryption == 'ssl' %}s{% endif
 OPENSTACK_KEYSTONE_URL = "http{% if app.identity.encryption == 'ssl' %}s{% endif %}://%s:{{ app.identity.port }}/v2.0" % OPENSTACK_HOST
 {%- endif %}
 
-{%- if app.get('multidomain', false) %}
-OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
-OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = 'default'
-{%- endif %}
+OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = {{ multidomain }}
+OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "{{ default_domain }}"
 
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "Member"
 

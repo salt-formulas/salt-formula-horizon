@@ -1,4 +1,6 @@
 {%- set dashboard_package = salt['pillar.get']('horizon:server:package', 'openstack-dashboard') %}
+{%- set multidomain = salt['pillar.get']('horizon:server:multidomain', 'False') %}
+{%- set default_domain = salt['pillar.get']('horizon:server:default_domain', 'default') %}
 
 {% set server = salt['grains.filter_by']({
     'Debian': {

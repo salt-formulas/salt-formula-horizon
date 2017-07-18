@@ -35,3 +35,5 @@ horizon:
       password_autocomplete: off
     openstack_neutron_network:
       enable_fip_topology_check: False
+    default_domain: default
+    multidomain: False
