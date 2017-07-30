@@ -62,7 +62,7 @@ API_RESULT_PAGE_SIZE = 20
 
 # The timezone of the server. This should correspond with the timezone
 # of your entire OpenStack installation, and hopefully be in UTC.
-TIME_ZONE = "UTC"
+TIME_ZONE = "{{ server.get('timezone', 'UTC') }}"
 
 COMPRESS_OFFLINE = True
 
