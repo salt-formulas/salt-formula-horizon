@@ -1,6 +1,12 @@
 {%- from "horizon/map.jinja" import server with context %}
+{%- set bind_port = server.get('bind',{}).get('port', 80) %}
+{%- set bind_host_port = server.get('bind', {}).get('address', '0.0.0.0') ~ ":" ~ bind_port %}
+{#- Apache listens on 80 and 443 by default in ports.conf, can't duplicate Listen declaration #}
+{%- if bind_port not in [80, 443] %}
+  Listen {{ bind_host_port }}
+{%- endif %}
 
-<VirtualHost {{ server.get('bind', {}).get('address', '0.0.0.0') }}:{{ server.get('bind', {}).get('port', 80) }}>
+<VirtualHost {{ bind_host_port }}>
   ServerName {{ server.get('host', {}).get('name', 'openstack-dashboard') }}
 
   WSGIScriptAlias / /usr/share/openstack-dashboard/openstack_dashboard/wsgi/django.wsgi
