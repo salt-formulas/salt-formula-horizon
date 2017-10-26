@@ -22,6 +22,7 @@
 
 SESSION_TIMEOUT = {{ server.get('session', {}).get('timeout', 3600) }}
 SESSION_ENGINE = "django.contrib.sessions.backends.{{ server.get('session', {}).get('engine', 'signed_cookies') }}"
+DROPDOWN_MAX_ITEMS = {{ server.get('dropdown_max_items', 30) }}
 
 # Path to directory containing policy.json files
 POLICY_FILES_PATH = "{{ server.get('policy_files_path') }}"
