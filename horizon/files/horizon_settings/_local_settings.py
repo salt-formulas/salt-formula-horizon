@@ -151,6 +151,27 @@ HORIZON_CONFIG['customization_module'] = '{{ plugin.app }}.overrides'
 API_MASK_URL = '{{ plugin.mask_url }}'
 {%- endif %}
 
+{%- if plugin_name == "avinetworks" %}
+
+# AVINETWORKS LBAAS CONFIG
+from openstack_dashboard.utils import settings as utsettings
+import avidashboard.enabled
+orig_func = utsettings.update_dashboards
+
+def new_update_dashboards(modules, config, apps):
+    modules.append(avidashboard.enabled)
+    return orig_func(modules, config, apps)
+
+utsettings.update_dashboards = new_update_dashboards
+AVI_CONTROLLER = {"{{plugin.control.region}}": "{{plugin.control.address}}" }
+AVI_LBAAS_FULL_UI = {{plugin.control.full_ui}}
+AVI_LBAAS_FULL_READONLY_UI = {{plugin.control.read_only}}
+{%- endif %}
+
+{%- if plugin.mask_protocol is defined %}
+API_MASK_PROTOCOL = '{{ plugin.mask_protocol }}'
+{%- endif %}
+
 {%- if plugin.config is defined %}
 {{ plugin_name|upper }}_CONFIG = {{ plugin.config|python }}
 {%- endif %}
