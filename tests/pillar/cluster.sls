@@ -13,7 +13,7 @@ horizon:
     cache:
       engine: memcached
       prefix: 'CACHE_HORIZON'
-      members: 
+      members:
       - host: 127.0.0.1
         port: 11211
       - host: 127.0.0.1
