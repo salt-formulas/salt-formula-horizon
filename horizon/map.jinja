@@ -19,6 +19,8 @@
         'apache_log_format': '%h %t %m \\"%U%q\\" %H %>s %O %D \\"%{Referer}i\\" \\"%{User-Agent}i\\"',
         'certs_dir': '/etc/ssl/certs',
         'private_dir': '/etc/ssl/private',
+        'port_config_file': '/etc/apache2/ports.conf',
+        'port_config_template': 'salt://horizon/files/ports.conf',
         'cache': {'host': '127.0.0.1', 'port': 11211}
     },
     'RedHat': {
