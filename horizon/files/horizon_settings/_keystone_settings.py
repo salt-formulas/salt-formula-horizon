@@ -33,6 +33,15 @@ OPENSTACK_API_VERSIONS = {
 #     ('http://cluster2.example.com:5000/v2.0', 'cluster2'),
 # ]
 
+{%- if app.regions is defined %}
+AVAILABLE_REGIONS = [
+{%- for region in app.regions %}
+    ('{{ region.address }}', '{{ region.name }}'),
+{%- endfor %}
+]
+{%- endif %}
+
+
 OPENSTACK_HOST = "{{ app.identity.host }}"
 {%- if app.get('api_versions', {}).identity is defined and app.get('api_versions', {}).identity != 2 %}
 OPENSTACK_KEYSTONE_URL = "http{% if app.identity.encryption == 'ssl' %}s{% endif %}://%s:{{ app.identity.port }}/v{{ app.api_versions.identity }}" % OPENSTACK_HOST

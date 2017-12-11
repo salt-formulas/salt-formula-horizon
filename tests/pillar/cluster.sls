@@ -27,6 +27,11 @@ horizon:
       api_version: 2
       encryption: ssl
       endpoint_type: publicURL
+    regions:
+      - name: cluster1
+        address: http://cluster1.example.com:5000/v2.0
+      - name: cluster2
+        address: http://cluster2.example.com:5000/v2.0
     websso:
       login_url: "WEBROOT + 'auth/login/'"
       logout_url: "WEBROOT + 'auth/logout/'"
