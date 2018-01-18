@@ -82,11 +82,11 @@ horizon_apache_config:
 
 {%- if grains.os_family == 'Debian' %}
 apache_enable_wsgi:
-  apache_module.enable:
+  apache_module.enabled:
     - name: wsgi
 
 enable_horizon_apache_config:
-  apache_conf.enable:
+  apache_conf.enabled:
   - name: openstack-dashboard
   - require:
     - file: horizon_apache_config
