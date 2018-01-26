@@ -28,12 +28,14 @@ SECRET_KEY = '{{ app.secret_key }}'
 
 CACHES = {
     'default': {
-
+{# TODO(vsaienko) remove this as we do not have custom cache backend starting from Pike #}
+{%- if server.version in ['mitaka', 'newton', 'ocata'] %}
         'OPTIONS': {
                 'DEAD_RETRY': 1,
                 'SERVER_RETRIES': 1,
                 'SOCKET_TIMEOUT': 1,
         },
+{%- endif %}
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         {%- if app.cache.members is defined %}
         'LOCATION': "{%- for member in app.cache.members %}{{ member.host }}:{{ member.port }}{% if not loop.last %};{% endif %}{%- endfor %}"

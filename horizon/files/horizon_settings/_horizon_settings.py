@@ -41,11 +41,17 @@ LOGGING = {
     # for loggers specified in this configuration dictionary. Note that
     # if nothing is specified here and disable_existing_loggers is True,
     # django.db.backends will still log unless it is disabled explicitly.
+    {# NOTE(vsaienko) django.utils.log.NullHandler was removed in Django 1.9 as it natively provided by python 2.7 #}
+    {%- if server.version in ['mitaka'] %}
+      {%- set null_handler_class = 'django.utils.log.NullHandler' %}
+    {%- else %}
+      {%- set null_handler_class = 'logging.NullHandler' %}
+    {%- endif %}
     'disable_existing_loggers': False,
     'handlers': {
         'null': {
             'level': 'DEBUG',
-            'class': 'django.utils.log.NullHandler',
+            'class': '{{ null_handler_class }}',
         },
         'console': {
             # Set the level to "DEBUG" for verbose output logging.
