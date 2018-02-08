@@ -75,6 +75,15 @@ LOGGING = {
             'handlers': ['null'],
             'propagate': False,
         },
+        {%- if server.version not in ['juno', 'liberty', 'kilo', 'mitaka', 'newton', 'ocata'] %}
+        # DEBUG level for django.template starting Pike has some false positive traces, set it to INFO
+        # by default. Caused by bug PROD-17558.
+        'django.template': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        {%- endif %}
         'requests': {
             'handlers': ['null'],
             'propagate': False,
