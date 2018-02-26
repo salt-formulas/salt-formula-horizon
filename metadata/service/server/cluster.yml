@@ -9,6 +9,7 @@ parameters:
     horizon_identity_version: 3
     horizon_identity_encryption: none
     horizon_identity_endpoint_type: internalURL
+    neutron_enable_bgp_vpn: false
   horizon:
     server:
       enabled: true
@@ -70,4 +71,8 @@ parameters:
           source: file
           name: heat_policy.json
           enabled: true
+        networking_bgpvpn:
+          source: file
+          name: bgpvpn_policy.json
+          enabled: ${_param:neutron_enable_bgp_vpn}
 

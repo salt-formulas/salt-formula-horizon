@@ -215,6 +215,20 @@ STATICFILES_DIRS.append(('dashboard/js/', xstatic.main.XStatic(contrail).base_di
 AUTHENTICATION_URLS += {{ plugin.urls|python }}
 {%- endif %}
 
+{%- if plugin_name == "bgpvpn" %}
+
+from openstack_dashboard.utils import settings as utsettings
+import bgpvpn_dashboard.enabled as bgpvpn_dashboard
+orig_func = utsettings.update_dashboards
+
+def new_update_dashboards(modules, config, apps):
+    modules.append(bgpvpn_dashboard)
+    return orig_func(modules, config, apps)
+
+utsettings.update_dashboards = new_update_dashboards
+{%- endif %}
+
+
 {%- endfor %}
 
 {%- if app.logging is defined %}
