@@ -35,9 +35,17 @@ horizon:
     websso:
       login_url: "WEBROOT + 'auth/login/'"
       logout_url: "WEBROOT + 'auth/logout/'"
+      login_redirect_url: "WEBROOT + 'project/'"
       websso_choices:
-        - saml2
         - oidc
+        - saml2
+      idp_mapping:
+        myidp_openid:
+          id: myidp
+          protocol: openid
+        myipd_mapped:
+          id: myidp
+          protocol: mapped
     horizon_config:
       password_autocomplete: off
     openstack_neutron_network:

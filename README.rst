@@ -429,7 +429,9 @@ Control dashboard behaviour
               address: https://github.com/openstack/horizon.git
               rev: stable/juno
 
-Enable WebSSO feature
+Enable WebSSO feature. Define a list of choices [supported choices: oidc, saml2], `credentials` choice will be automatically appended and choice description is predefined. DEPRECATED
+
+WebSSO with credentials and saml2
 
 .. code-block:: yaml
 
@@ -439,10 +441,58 @@ Enable WebSSO feature
         websso:
           login_url: "WEBROOT + 'auth/login/'"
           logout_url: "WEBROOT + 'auth/logout/'"
+          login_redirect_url: "WEBROOT + 'project/'"
           websso_choices:
             - saml2
-            - oidc
 
+Enable WebSSO feature. Define a map of choices in the following format: `{"<choice_name>": {"description": "<choice_description>"}`.
+
+WebSSO with saml2 and credentials
+
+.. code-block:: yaml
+
+    horizon:
+      server:
+        enabled: true
+        websso:
+          login_url: "WEBROOT + 'auth/login/'"
+          logout_url: "WEBROOT + 'auth/logout/'"
+          login_redirect_url: "WEBROOT + 'project/'"
+          websso_choices:
+            saml2:
+              description: "Security Assertion Markup Language"
+            credentials:
+              description: "Keystone Credentials"
+
+WebSSO with IDP mapping.
+
+.. code-block:: yaml
+
+    horizon:
+      server:
+        enabled: true
+        websso:
+          login_url: "WEBROOT + 'auth/login/'"
+          logout_url: "WEBROOT + 'auth/logout/'"
+          login_redirect_url: "WEBROOT + 'project/'"
+          websso_choices:
+            credentials:
+              description: "Keystone Credentials"
+            saml2:
+              description: "Security Assertion Markup Language"
+            oidc:
+              description: "OpenID Connect"
+            myidp_oidc:
+              description: "Acme Corporation - OpenID Connect"
+            myidp_saml2:
+              description: "Acme Corporation - SAML2"
+          idp_mapping:
+            myidp_oidc:
+              id: myidp
+              protocol: oidc
+            myidp_saml2:
+              id: myidp
+              protocol: saml2
 
 More Information
 ================
