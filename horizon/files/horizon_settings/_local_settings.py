@@ -200,7 +200,9 @@ SAHARA_USE_NEUTRON = True
 AUTO_ASSIGNMENT_ENABLED = False
 {%- endif %}
 
-{%- if plugin_name == "contrail" and app.get("version", "juno") == "juno" %}
+{%- if plugin_name == "contrail" %}
+
+{%- if app.get("version", "juno") == "juno" %}
 from openstack_dashboard.settings import STATICFILES_DIRS
 import xstatic
 from contrail_openstack_dashboard.openstack_dashboard.xstatic.pkg import contrail
@@ -208,6 +210,10 @@ from contrail_openstack_dashboard.openstack_dashboard.xstatic.pkg import contrai
 pkg = __import__('contrail_openstack_dashboard.openstack_dashboard')
 
 STATICFILES_DIRS.append(('dashboard/js/', xstatic.main.XStatic(contrail).base_dir))
+
+{%- endif %}
+
+OPENCONTRAIL_VERSION = "{{ plugin.get('opencontrail_version', '3.2') }}"
 
 {%- endif %}
 
