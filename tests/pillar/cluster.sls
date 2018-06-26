@@ -4,6 +4,7 @@ horizon:
     version: liberty
     secret_key: secret
     session_timeout: 43200
+    ssl_no_verify: false
     wsgi:
       processes: 3
       threads: 10

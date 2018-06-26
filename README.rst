@@ -105,7 +105,9 @@ Horizon with enabled SSL security (when SSL is realised by proxy)
         secure: True
 
 
-Horizon package setup with SSL
+Horizon package setup with SSL.
+
+Important: for the sake of backwards compatibility `ssl_no_verify` attribute defaults to True when horizon:server:identity:encryption is set to 'ssl'.
 
 .. code-block:: yaml
 
@@ -114,6 +116,7 @@ Horizon package setup with SSL
         enabled: true
         secret_key: MEGASECRET
         version: juno
+        ssl_no_verify: false
         ssl:
           enabled: true
           authority: CA_Authority

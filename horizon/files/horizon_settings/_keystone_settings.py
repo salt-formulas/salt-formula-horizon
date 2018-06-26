@@ -55,8 +55,15 @@ OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "{{ default_domain }}"
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "Member"
 
 # Disable SSL certificate checks (useful for self-signed certificates):
+{#- NO_VERIFY is set to True if identity.encryption == 'ssl', unless explicitly set in the pillar for the sake of backwards compatibility #}
 {%- if app.identity.encryption == 'ssl' %}
-OPENSTACK_SSL_NO_VERIFY = True
+{%- set _no_verify = True %}
+{%- endif %}
+{%- if app.ssl_no_verify is defined %}
+{%- set _no_verify = app.ssl_no_verify %}
+{%- endif %}
+{%- if _no_verify is defined %}
+OPENSTACK_SSL_NO_VERIFY = {{ _no_verify }}
 {%- endif %}
 
 # The CA certificate to use to verify SSL connections
