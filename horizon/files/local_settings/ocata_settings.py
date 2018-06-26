@@ -1,4 +1,6 @@
 import os
+
+from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from openstack_dashboard import exceptions
 
@@ -29,16 +31,30 @@ HORIZON_CONFIG = {
     'disable_password_reveal': True,
     'password_autocomplete': 'off'
 }
-{%- if app.theme is defined or (app.plugin is defined and app.plugin.horizon_theme is defined) %}
-{%- if app.theme is defined %}
-CUSTOM_THEME_PATH = 'themes/{{ app.theme }}'
-{%- elif app.plugin.horizon_theme.theme_name is defined %}
-# Enable custom theme if it is present.
-try:
-  from openstack_dashboard.enabled._99_horizon_theme import CUSTOM_THEME_PATH
-except ImportError:
-  pass
-{%- endif %}
+
+{%- if app.themes is defined %}
+# 'key', 'label', 'path'
+{%- set theme_dir = app.themes.get('directory', 'themes') %}
+AVAILABLE_THEMES = [
+{%- for slug, theme in app.themes.get('available', {}).iteritems() %}
+  {%- if theme.get('enabled', True) %}
+    (
+        "{{ slug }}",
+        pgettext_lazy("{{ theme.description }}", "{{ theme.name }}"),
+        "{{ theme.get('path', theme_dir + '/' + slug ) }}"
+    ),
+  {%- endif %}
+{%- endfor %}
+]
+
+# The default theme if no cookie is present
+DEFAULT_THEME = '{{ app.themes.get("default", "default") }}'
+
+# Theme Static Directory
+THEME_COLLECTION_DIR = '{{ theme_dir }}'
+
+# Theme Cookie Name
+THEME_COOKIE_NAME = '{{ app.themes.get("cookie_name", "theme") }}'
 {%- endif %}
 
 INSTALLED_APPS = (

@@ -40,6 +40,19 @@ parameters:
         host: ${_param:horizon_identity_host}
         encryption: ${_param:horizon_identity_encryption}
         endpoint_type: ${_param:horizon_identity_endpoint_type}
+      themes:
+        default: "default"
+        directory: "themes"
+        cookie_name: "theme"
+        available:
+          default:
+            name: "Default"
+            description: "Default style theme"
+            enabled: True
+          material:
+            name: "Material"
+            description: "Google's Material Design style theme"
+            enabled: True
       policy:
         identity:
           source: file

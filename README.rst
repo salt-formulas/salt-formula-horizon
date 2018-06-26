@@ -390,6 +390,46 @@ Themed multisite setup
             mail:
               host: '127.0.0.1'
 
+Set advanced theme options (for Horizon version Mitaka and newer).
+
+Full example:
+
+.. code-block:: yaml
+
+  horizon:
+    server:
+      themes:
+        default: default                           # optional, default: "default"
+        directory: themes                          # optional, default: "themes"
+        cookie_name: theme                         # optional, default: "theme"
+        available:
+          default:                                 # slug
+            name: "Default"                        # display name
+            description: "Default style theme"
+            path: "themes/default"                 # optional, default: "<directory>/<slug>", e.g. "themes/default"
+            enabled: True
+          material:
+            name: "Material"
+            description: "Google's Material Design style theme"
+            path: "themes/material"
+            enabled: True
+
+Minimal example:
+
+.. code-block:: yaml
+
+  horizon:
+    server:
+      theme:
+        available:
+          default:                                 # slug
+            name: "Default"                        # display name
+            description: "Default style theme"
+          material:
+            name: "Material"
+            description: "Google's Material Design style theme"
+
+
 API versions override
 
 .. code-block:: yaml
