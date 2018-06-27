@@ -58,17 +58,6 @@ horizon_policy_{{ policy_name }}_file:
 
 {%- endfor %}
 
-horizon_apache_port_config:
-  file.managed:
-  - name: {{ server.port_config_file }}
-  - source: {{ server.port_config_template }}
-  - template: jinja
-  - mode: 644
-  - user: root
-  - group: root
-  - require:
-    - pkg: horizon_packages
-
 horizon_apache_config:
   file.managed:
   - name: {{ server.apache_config }}
@@ -101,7 +90,6 @@ horizon_services:
     - file: horizon_config
     - file: horizon_apache_config
     - file: horizon_log_file
-    - file: horizon_apache_port_config
 
 horizon_log_dir:
   file.directory:

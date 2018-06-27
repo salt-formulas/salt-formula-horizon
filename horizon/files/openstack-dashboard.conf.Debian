@@ -1,4 +1,5 @@
 {%- from "horizon/map.jinja" import server with context %}
+Listen {{ server.get('bind', {}).get('address', '0.0.0.0') }}:{{ server.get('bind', {}).get('port', 80) }}
 
 <VirtualHost {{ server.get('bind', {}).get('address', '0.0.0.0') }}:{{ server.get('bind', {}).get('port', 80) }}>
   ServerName {{ server.get('host', {}).get('name', 'openstack-dashboard') }}
