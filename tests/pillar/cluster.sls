@@ -52,14 +52,14 @@ horizon:
     openstack_neutron_network:
       enable_fip_topology_check: False
     themes:
-      default: default  
-      directory: themes  
-      cookie_name: theme  
+      default: default
+      directory: themes
+      cookie_name: theme
       available:
         default:
           name: "Default"
           description: "Default style theme"
-          path: "themes/default"                 
+          path: "themes/default"
         material:
           name: "Material"
           description: "Google's Material Design style theme"
