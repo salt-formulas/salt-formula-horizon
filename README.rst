@@ -1,17 +1,16 @@
 
-===============
-Horizon Formula
-===============
+=====
+Usage
+=====
 
-Horizon is the canonical implementation of OpenStack’s Dashboard, which
-provides a web based user interface to OpenStack services including Nova,
+Horizon is the canonical implementation of OpenStack Dashboard, which
+provides a web-based user interface to OpenStack services including Nova,
 Swift, Keystone, etc.
-
 
 Sample Pillars
 ==============
 
-Simplest horizon setup
+Simplest Horizon setup:
 
 .. code-block:: yaml
 
@@ -35,7 +34,7 @@ Simplest horizon setup
         mail:
           host: '127.0.0.1'
 
-Multidomain setup for horizon
+Multidomain setup for Horizon:
 
 .. code-block:: yaml
 
@@ -45,7 +44,7 @@ Multidomain setup for horizon
         default_domain: MYDOMAIN
         multidomain: True
 
-Simple branded horizon
+Simple branded Horizon:
 
 .. code-block:: yaml
 
@@ -56,7 +55,10 @@ Simple branded horizon
         default_dashboard: 'admin'
         help_url: 'http://doc.domain.com'
 
-Horizon with policy files metadata. With source mine you can obtain real time policy file state from targeted node (OpenStack control node), provided you have policy file published to specified grain key. Source file will obtain static policy definition from formula files directory.
+Horizon with policy files metadata. With source mine you can obtain real
+time policy file state from targeted node (OpenStack control node),
+provided you have policy file published to specified grain key. Source
+file will obtain static policy definition from formula files directory.
 
 .. code-block:: yaml
 
@@ -95,7 +97,7 @@ Horizon with policy files metadata. With source mine you can obtain real time po
             name: heat_policy.json
             enabled: true
 
-Horizon with enabled SSL security (when SSL is realised by proxy)
+Horizon with enabled SSL security (when SSL is realised by proxy):
 
 .. code-block:: yaml
 
@@ -105,9 +107,11 @@ Horizon with enabled SSL security (when SSL is realised by proxy)
         secure: True
 
 
-Horizon package setup with SSL.
+Horizon package setup with SSL:
 
-Important: for the sake of backwards compatibility `ssl_no_verify` attribute defaults to True when horizon:server:identity:encryption is set to 'ssl'.
+.. important:: For the sake of backwards compatibility, the ``ssl_no_verify``
+               attribute defaults to ``true`` when
+               ``horizon:server:identity:encryption`` is set to ``'ssl'``.
 
 .. code-block:: yaml
 
@@ -136,7 +140,9 @@ Important: for the sake of backwards compatibility `ssl_no_verify` attribute def
         mail:
           host: '127.0.0.1'
 
-Horizon with custom SESSION_ENGINE (default is "signed_cookies", valid options are: "signed_cookies", "cache", "file") and SESSION_TIMEOUT
+Horizon with custom ``SESSION_ENGINE`` (default is
+``signed_cookies``, valid options are: ``signed_cookies``,
+``cache``, ``file``) and ``SESSION_TIMEOUT``:
 
 .. code-block:: yaml
 
@@ -148,7 +154,7 @@ Horizon with custom SESSION_ENGINE (default is "signed_cookies", valid options a
           engine: 'cache'
           timeout: 43200
 
-Multi-regional horizon setup
+Multi-regional Horizon setup:
 
 .. code-block:: yaml
 
@@ -176,7 +182,7 @@ Multi-regional horizon setup
         - name: cluster2
           address: http://cluster2.example.com:5000/v2.0
 
-Horizon setup with sensu plugin
+Horizon setup with sensu plugin:
 
 .. code-block:: yaml
 
@@ -195,7 +201,7 @@ Horizon setup with sensu plugin
               address: git@repo1.robotice.cz:django/horizon-monitoring.git
               rev: develop
 
-Sensu multi API
+Sensu multi API:
 
 .. code-block:: yaml
 
@@ -211,7 +217,7 @@ Sensu multi API
             host: anotherhost
             port: 4567
 
-Horizon setup with jenkins plugin
+Horizon setup with jenkins plugin:
 
 .. code-block:: yaml
 
@@ -229,7 +235,7 @@ Horizon setup with jenkins plugin
             source:
               type: pkg
 
-Horizon setup with billometer plugin
+Horizon setup with billometer plugin:
 
 .. code-block:: yaml
 
@@ -249,7 +255,7 @@ Horizon setup with billometer plugin
               address: git@repo1.robotice.cz:django/horizon-billing.git
               rev: develop
 
-Horizon setup with contrail plugin
+Horizon setup with Contrail plugin:
 
 .. code-block:: yaml
 
@@ -266,7 +272,7 @@ Horizon setup with contrail plugin
               address: git@repo1.robotice.cz:django/horizon-contrail.git
               rev: develop
 
-Horizon setup with sentry log handler
+Horizon setup with sentry log handler:
 
 .. code-block:: yaml
 
@@ -282,7 +288,7 @@ Horizon setup with sentry log handler
 Multisite with Git source
 -------------------------
 
-Simple Horizon setup from git repository
+Simple Horizon setup from Git repository:
 
 .. code-block:: yaml
 
@@ -310,7 +316,7 @@ Simple Horizon setup from git repository
             mail:
               host: '127.0.0.1'
 
-Themed multisite setup
+Themed multisite setup:
 
 .. code-block:: yaml
 
@@ -429,8 +435,7 @@ Minimal example:
             name: "Material"
             description: "Google's Material Design style theme"
 
-
-API versions override
+API versions override:
 
 .. code-block:: yaml
 
@@ -448,7 +453,7 @@ API versions override
               address: https://github.com/openstack/horizon.git
               rev: stable/havana
 
-Control dashboard behaviour
+Control dashboard behavior:
 
 .. code-block:: yaml
 
@@ -472,9 +477,12 @@ Control dashboard behaviour
               address: https://github.com/openstack/horizon.git
               rev: stable/juno
 
-Enable WebSSO feature. Define a list of choices [supported choices: oidc, saml2], `credentials` choice will be automatically appended and choice description is predefined. DEPRECATED
+Enable WebSSO feature. Define a list of choices
+[supported choices: oidc, saml2], ``credentials`` choice
+will be automatically appended and choice description is
+predefined. DEPRECATED
 
-WebSSO with credentials and saml2
+WebSSO with credentials and saml2:
 
 .. code-block:: yaml
 
@@ -488,9 +496,10 @@ WebSSO with credentials and saml2
           websso_choices:
             - saml2
 
-Enable WebSSO feature. Define a map of choices in the following format: `{"<choice_name>": {"description": "<choice_description>"}`.
+Enable WebSSO feature. Define a map of choices in the following
+format: ``{"<choice_name>": {"description": "<choice_description>"}``.
 
-WebSSO with saml2 and credentials
+WebSSO with saml2 and credentials:
 
 .. code-block:: yaml
 
@@ -507,7 +516,7 @@ WebSSO with saml2 and credentials
             credentials:
               description: "Keystone Credentials"
 
-WebSSO with IDP mapping.
+WebSSO with IDP mapping:
 
 .. code-block:: yaml
 
@@ -537,8 +546,8 @@ WebSSO with IDP mapping.
               id: myidp
               protocol: saml2
 
-More Information
-================
+Read more
+=========
 
 * https://github.com/openstack/horizon
 * http://dijks.wordpress.com/2012/07/06/how-to-change-screen-resolution-of-novnc-client-in-openstack-essex-dashboard-nova-horizon/
@@ -547,32 +556,26 @@ More Information
 Documentation and Bugs
 ======================
 
-To learn how to install and update salt-formulas, consult the documentation
-available online at:
+* http://salt-formulas.readthedocs.io/
+   Learn how to install and update salt-formulas
 
-    http://salt-formulas.readthedocs.io/
+* https://github.com/salt-formulas/salt-formula-horizon/issues
+   In the unfortunate event that bugs are discovered, report the issue to the
+   appropriate issue tracker. Use the Github issue tracker for a specific salt
+   formula
 
-In the unfortunate event that bugs are discovered, they should be reported to
-the appropriate issue tracker. Use Github issue tracker for specific salt
-formula:
+* https://launchpad.net/salt-formulas
+   For feature requests, bug reports, or blueprints affecting the entire
+   ecosystem, use the Launchpad salt-formulas project
 
-    https://github.com/salt-formulas/salt-formula-horizon/issues
+* https://launchpad.net/~salt-formulas-users
+   Join the salt-formulas-users team and subscribe to mailing list if required
 
-For feature requests, bug reports or blueprints affecting entire ecosystem,
-use Launchpad salt-formulas project:
+* https://github.com/salt-formulas/salt-formula-horizon
+   Develop the salt-formulas projects in the master branch and then submit pull
+   requests against a specific formula
 
-    https://launchpad.net/salt-formulas
+* #salt-formulas @ irc.freenode.net
+   Use this IRC channel in case of any questions or feedback which is always
+   welcome
 
-You can also join salt-formulas-users team and subscribe to mailing list:
-
-    https://launchpad.net/~salt-formulas-users
-
-Developers wishing to work on the salt-formulas projects should always base
-their work on master branch and submit pull request against specific formula.
-
-    https://github.com/salt-formulas/salt-formula-horizon
-
-Any questions or feedback is always welcome so feel free to join our IRC
-channel:
-
-    #salt-formulas @ irc.freenode.net
