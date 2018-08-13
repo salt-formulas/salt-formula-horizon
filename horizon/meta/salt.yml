@@ -4,3 +4,8 @@ orchestrate:
     require:
     - salt: keystone.server
 
+orchestration:
+  upgrade:
+    applications:
+      horizon:
+        priority: 1800
