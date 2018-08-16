@@ -1,6 +1,9 @@
 {%- from "horizon/map.jinja" import server with context %}
 {%- if server.enabled %}
 
+include:
+ - apache
+
 horizon_packages:
   pkg.installed:
   - names: {{ server.pkgs }}

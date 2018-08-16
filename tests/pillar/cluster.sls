@@ -1,3 +1,5 @@
+include:
+ - .apache_single
 horizon:
   server:
     enabled: true

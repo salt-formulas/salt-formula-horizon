@@ -14,6 +14,10 @@ provisioner:
   formula: horizon
   grains:
     noservices: False
+  dependencies:
+    - name: apache
+      repo: git
+      source: https://github.com/salt-formulas/salt-formula-apache
   state_top:
     base:
       "*":
@@ -22,6 +26,7 @@ provisioner:
     top.sls:
       base:
         "*":
+          - apache_single
           - horizon
 
 verifier:
@@ -41,10 +46,12 @@ suites:
   - name: cluster
     provisioner:
       pillars-from-files:
+        apache_single.sls: tests/pillar/apache_single.sls
         horizon.sls: tests/pillar/cluster.sls
 
   - name: single
     provisioner:
       pillars-from-files:
+        apache_single.sls: tests/pillar/apache_single.sls
         horizon.sls: tests/pillar/single.sls
 # vim: ft=yaml sw=2 ts=2 sts=2 tw=125
