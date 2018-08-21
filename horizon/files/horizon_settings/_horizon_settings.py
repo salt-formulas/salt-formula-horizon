@@ -24,6 +24,17 @@ SESSION_TIMEOUT = {{ server.get('session', {}).get('timeout', 3600) }}
 SESSION_ENGINE = "django.contrib.sessions.backends.{{ server.get('session', {}).get('engine', 'signed_cookies') }}"
 DROPDOWN_MAX_ITEMS = {{ server.get('dropdown_max_items', 30) }}
 
+{%- set launch_data = app.get('launch_instance_defaults', {}) %}
+# A dictionary of settings which can be used to provide the default values for
+# properties found in the Launch Instance modal.
+{%- if app.launch_instance_defaults is defined %}
+LAUNCH_INSTANCE_DEFAULTS = {
+    {%- for default_name, defaults in launch_data.items() %}
+    '{{ default_name }}': {{ defaults }},
+    {%- endfor %}
+}
+{%- endif %}
+
 # Path to directory containing policy.json files
 POLICY_FILES_PATH = "{{ server.get('policy_files_path') }}"
 # Map of local copy of service policy files

@@ -55,6 +55,14 @@ horizon:
       password_autocomplete: off
     openstack_neutron_network:
       enable_fip_topology_check: False
+    launch_instance_defaults:
+      config_drive: False
+      enable_scheduler_hints: True
+      disable_image: False
+      disable_instance_snapshot: False
+      disable_volume: False
+      disable_volume_snapshot: False
+      create_volume: True
     default_domain: default
     multidomain: False
     themes:

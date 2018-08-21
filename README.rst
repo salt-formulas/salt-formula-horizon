@@ -182,6 +182,21 @@ Multi-regional Horizon setup:
         - name: cluster2
           address: http://cluster2.example.com:5000/v2.0
 
+Configuration of LAUNCH_INSTANCE_DEFAULTS parameter:
+
+.. code-block:: yaml
+
+    horizon:
+      server:
+        launch_instance_defaults:
+          config_drive: False
+          enable_scheduler_hints: True
+          disable_image: False
+          disable_instance_snapshot: False
+          disable_volume: False
+          disable_volume_snapshot: False
+          create_volume: False
+
 Horizon setup with sensu plugin:
 
 .. code-block:: yaml
@@ -578,4 +593,3 @@ Documentation and Bugs
 * #salt-formulas @ irc.freenode.net
    Use this IRC channel in case of any questions or feedback which is always
    welcome
-
