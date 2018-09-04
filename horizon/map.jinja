@@ -41,3 +41,4 @@
     },
 }, merge=salt['pillar.get']('horizon:server')) %}
 
+{% set upgrade = pillar.get('horizon', {}).get('upgrade', {}) %}
