@@ -3,7 +3,7 @@
 horizon_upgrade_verify_api:
   test.show_notification:
     - name: "dump_message_verify_api_horizon"
-    - text: "Running horizon.upgrade.verify.api"
+    - text: "Running horizon.upgrade.verify._api"
 
 {%- if server.get('enabled', false) %}
 {%- set horizon_server = '127.0.0.1' if server.get('bind', {}).get('address') == '0.0.0.0' else server.get('bind', {}).get('address') %}
