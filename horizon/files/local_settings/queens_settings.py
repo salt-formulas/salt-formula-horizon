@@ -79,5 +79,6 @@ INSTALLED_APPS = (
 {% include "horizon/files/horizon_settings/_glance_settings.py" %}
 {% include "horizon/files/horizon_settings/_neutron_settings.py" %}
 {% include "horizon/files/horizon_settings/_heat_settings.py" %}
+{% include "horizon/files/horizon_settings/_cinder_settings.py" %}
 {% include "horizon/files/horizon_settings/_websso_settings.py" %}
 {% include "horizon/files/horizon_settings/_ssl_settings.py" %}
