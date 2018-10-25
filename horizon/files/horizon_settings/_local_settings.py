@@ -12,14 +12,6 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
 
-{%- if app.ssl is defined %}
-{%- if app.ssl.enabled %}
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-{%- endif %}
-{%- endif %}
-
 AUTHENTICATION_URLS = ['openstack_auth.urls']
 
 LOCAL_PATH = os.path.dirname(os.path.abspath(__file__))
