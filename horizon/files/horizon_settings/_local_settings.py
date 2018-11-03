@@ -152,7 +152,7 @@ utsettings.update_dashboards = new_update_dashboards
 AVI_CONTROLLER = {"{{plugin.control.region}}": "{{plugin.control.address}}" }
 AVI_LBAAS_FULL_UI = {{plugin.control.full_ui}}
 AVI_LBAAS_FULL_READONLY_UI = {{plugin.control.read_only}}
-AVI_LBAAS_PANEL_NAME = {{ plugin.control.get('panel_name', "AVI LBaaS Analytics") }}
+AVI_LBAAS_PANEL_NAME = '{{ plugin.control.get('panel_name', "AVI LBaaS Analytics") }}'
 {%- endif %}
 
 {%- if plugin.config is defined %}
