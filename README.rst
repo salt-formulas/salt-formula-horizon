@@ -561,6 +561,17 @@ WebSSO with IDP mapping:
               id: myidp
               protocol: saml2
 
+Images upload mode:
+Horizon allows to use different strategies when uploading images to glance that are
+controlled by `horizon:server:images_upload_mode` pillar, possible options are
+direct, ligacy, off. When `direct` mode is used CORS have to be disabled on glance
+side, and client should use modern browser.
+
+.. code-block:: yaml
+
+    horizon:
+      server:
+        images_upload_mode: "direct"
 
 Upgrades
 ========

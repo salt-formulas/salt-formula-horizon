@@ -36,5 +36,5 @@ IMAGE_CUSTOM_PROPERTY_TITLES = {
     "image_type": _("Image Type")
 }
 
-HORIZON_IMAGES_UPLOAD_MODE = "legacy"
+HORIZON_IMAGES_UPLOAD_MODE = {{ app.get('images_upload_mode', 'legacy')|yaml_dquote }}
 IMAGES_ALLOW_LOCATION = True
